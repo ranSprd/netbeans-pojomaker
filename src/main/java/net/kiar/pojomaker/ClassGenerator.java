@@ -20,7 +20,7 @@ import org.jsonschema2pojo.rules.RuleFactory;
 public class ClassGenerator {
 
     public void build(URL inputJsonUrl, File outputJavaClassDirectory, String packageName, String javaClassName) throws IOException {
-    
+        
         JCodeModel jcodeModel = new JCodeModel();
 
         GenerationConfig config = new DefaultGenerationConfig() {
