@@ -14,6 +14,7 @@ import org.openide.WizardValidationException;
 import org.openide.util.HelpCtx;
 
 public class JsonToPojoWizardPanel1 implements WizardDescriptor.ValidatingPanel<WizardDescriptor> {
+//public class JsonToPojoWizardPanel1 implements WizardDescriptor.Panel<WizardDescriptor> {
 
     private static final Logger logger = Logger.getLogger(JsonToPojoWizardPanel1.class.getName());
 
@@ -82,8 +83,9 @@ public class JsonToPojoWizardPanel1 implements WizardDescriptor.ValidatingPanel<
             final ObjectMapper mapper = new ObjectMapper();
             mapper.readTree( getComponent().getJsonContent());
             isValid = true;
-        } catch (IOException e) {
+        } catch (Exception e) {
             isValid = false;
+            throw new WizardValidationException(component, e.getMessage(), e.getLocalizedMessage());
         }
 
     }
