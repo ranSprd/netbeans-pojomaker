@@ -1,8 +1,12 @@
 package net.kiar.pojomaker;
 
+import com.sun.codemodel.CodeWriter;
 import com.sun.codemodel.JCodeModel;
+import com.sun.codemodel.JPackage;
+import com.sun.codemodel.JType;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 import org.jsonschema2pojo.DefaultGenerationConfig;
 import org.jsonschema2pojo.GenerationConfig;
@@ -19,7 +23,7 @@ import org.jsonschema2pojo.rules.RuleFactory;
  */
 public class ClassGenerator {
 
-    public void build(URL inputJsonUrl, File outputJavaClassDirectory, String packageName, String javaClassName) throws IOException {
+    public void build(String jsonSource, String packageName, String javaClassName) throws IOException {
         
         JCodeModel jcodeModel = new JCodeModel();
 
@@ -41,9 +45,23 @@ public class ClassGenerator {
                                  new SchemaStore()), 
                                  new SchemaGenerator());
         
-        mapper.generate(jcodeModel, javaClassName, packageName, inputJsonUrl);
+        JType result = mapper.generate(jcodeModel, javaClassName, packageName, jsonSource);
 
-        jcodeModel.build(outputJavaClassDirectory);
+        CodeWriter cw = new CodeWriter() {
+            @Override
+            public OutputStream openBinary(JPackage pkg, String fileName) throws IOException {
+//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                return null;
+
+            }
+
+            @Override
+            public void close() throws IOException {
+//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        };
+//        jcodeModel.build(cw);
+//        jcodeModel.build(outputJavaClassDirectory);
     }
 
 }

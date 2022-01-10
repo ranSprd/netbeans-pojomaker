@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/NetBeansModuleDevelopment-files/visualPanel.java to edit this template
- */
-package net.kiar.pojomaker;
+package net.kiar.pojomaker.ui;
 
 import javax.swing.JPanel;
+import org.apache.commons.lang3.StringUtils;
 
 public final class JsonToPojoVisualPanel2 extends JPanel {
 
@@ -13,6 +10,15 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
      */
     public JsonToPojoVisualPanel2() {
         initComponents();
+    }
+    
+    public void set(String mainClassName, String packageName) {
+        if (StringUtils.isBlank(jTextField2.getText())) {
+            jTextField2.setText(mainClassName);
+        }
+        if (StringUtils.isBlank(jTextField1.getText())) {
+            jTextField1.setText(packageName);
+        }
     }
 
     @Override

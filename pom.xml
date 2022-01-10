@@ -112,6 +112,16 @@
     </dependency>
     <dependency>
       <groupId>org.netbeans.api</groupId>
+      <artifactId>org-openide-actions</artifactId>
+      <version>RELEASE126</version>
+    </dependency>
+    <dependency>
+      <groupId>org.netbeans.api</groupId>
+      <artifactId>org-openide-nodes</artifactId>
+      <version>RELEASE126</version>
+    </dependency>
+    <dependency>
+      <groupId>org.netbeans.api</groupId>
       <artifactId>org-openide-dialogs</artifactId>
       <version>RELEASE126</version>
     </dependency>

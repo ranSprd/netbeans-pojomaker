@@ -1,4 +1,4 @@
-package net.kiar.pojomaker;
+package net.kiar.pojomaker.actions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

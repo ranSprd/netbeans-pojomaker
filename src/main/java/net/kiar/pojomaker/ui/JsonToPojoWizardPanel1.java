@@ -1,4 +1,4 @@
-package net.kiar.pojomaker;
+package net.kiar.pojomaker.ui;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
@@ -119,6 +119,7 @@ public class JsonToPojoWizardPanel1 implements WizardDescriptor.ValidatingPanel<
     @Override
     public void storeSettings(WizardDescriptor wiz) {
         // use wiz.putProperty to remember current panel state
+        wiz.putProperty(Constants.JSON_SOURCE, component.getJsonContent());
     }
 
 }

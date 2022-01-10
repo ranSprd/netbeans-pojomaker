@@ -1,5 +1,6 @@
-package net.kiar.pojomaker;
+package net.kiar.pojomaker.actions;
 
+import net.kiar.pojomaker.ui.JsonToPojoWizard;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -41,16 +42,16 @@ public final class NewFromJsonProjectAction extends AbstractAction implements Co
         // check if project if a java project
         // and disable for all other project types
 //        this.setEnabled(false);
-        return new ContextAction();
+        return new ContextActionExecutor();
     }
     
     
     
-    private class ContextAction extends AbstractAction {
+    private class ContextActionExecutor extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            JsonToPojoWizard.startWizard();
+            JsonToPojoWizard.startWizard(null, null);
         }
         
     }

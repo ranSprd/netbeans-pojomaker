@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/NetBeansModuleDevelopment-files/wizardPanel.java to edit this template
  */
-package net.kiar.pojomaker;
+package net.kiar.pojomaker.ui;
 
 import javax.swing.event.ChangeListener;
 import org.openide.WizardDescriptor;
@@ -57,11 +57,16 @@ public class JsonToPojoWizardPanel2 implements WizardDescriptor.Panel<WizardDesc
     @Override
     public void readSettings(WizardDescriptor wiz) {
         // use wiz.getProperty to retrieve previous panel state
+        System.out.println("read settings ");
+        component.set( (String) wiz.getProperty(Constants.CLASS_NAME), 
+                       (String) wiz.getProperty(Constants.PACKAGE_NAME));
+        
     }
 
     @Override
     public void storeSettings(WizardDescriptor wiz) {
         // use wiz.putProperty to remember current panel state
+        System.out.println("write settings");
     }
 
 }

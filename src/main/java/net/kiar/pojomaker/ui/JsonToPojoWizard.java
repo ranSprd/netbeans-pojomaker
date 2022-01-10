@@ -1,10 +1,12 @@
-package net.kiar.pojomaker;
+package net.kiar.pojomaker.ui;
 
 import java.awt.Component;
+import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComponent;
+import net.kiar.pojomaker.ClassGenerator;
 import org.openide.DialogDisplayer;
 import org.openide.WizardDescriptor;
 
@@ -14,7 +16,7 @@ import org.openide.WizardDescriptor;
  */
 public class JsonToPojoWizard {
 
-    public static void startWizard() {
+    public static void startWizard(String mainClassName, String packageName) {
         List<WizardDescriptor.Panel<WizardDescriptor>> panels = new ArrayList<>();
         panels.add(new JsonToPojoWizardPanel1());
         panels.add(new JsonToPojoWizardPanel2());
@@ -36,8 +38,17 @@ public class JsonToPojoWizard {
         // {0} will be replaced by WizardDesriptor.Panel.getComponent().getName()
         wiz.setTitleFormat(new MessageFormat("{0}"));
         wiz.setTitle("Pojo Class Creator");
+        wiz.putProperty(Constants.CLASS_NAME, mainClassName);
+        wiz.putProperty(Constants.PACKAGE_NAME, packageName);
         if (DialogDisplayer.getDefault().notify(wiz) == WizardDescriptor.FINISH_OPTION) {
             // do something
+            try {
+                ClassGenerator cg = new ClassGenerator();
+                cg.build((String) wiz.getProperty(Constants.JSON_SOURCE), 
+                        packageName, 
+                        mainClassName);
+            } catch (Exception e) {
+            }
         }
         
     }
