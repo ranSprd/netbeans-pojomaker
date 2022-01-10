@@ -19,7 +19,7 @@ public final class JsonToPojoWizardAction implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JsonToPojoWizard.startWizard(null, null);
+        JsonToPojoWizard.startWizard(null, null,null);
     }
 
 }

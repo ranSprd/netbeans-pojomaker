@@ -20,6 +20,14 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
             jTextField1.setText(packageName);
         }
     }
+    
+    public String getPackageName() {
+        return jTextField1.getText();
+    }
+
+    public String getMainJavaClassName() {
+        return jTextField2.getText();
+    }
 
     @Override
     public String getName() {
@@ -41,6 +49,7 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
 
         org.openide.awt.Mnemonics.setLocalizedText(jLabel1, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.jLabel1.text")); // NOI18N
 
+        jTextField1.setEditable(false);
         jTextField1.setText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.jTextField1.text")); // NOI18N
 
         org.openide.awt.Mnemonics.setLocalizedText(jLabel2, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.jLabel2.text")); // NOI18N

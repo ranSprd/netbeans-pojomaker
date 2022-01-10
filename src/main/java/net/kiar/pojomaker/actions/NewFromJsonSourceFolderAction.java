@@ -1,10 +1,10 @@
 package net.kiar.pojomaker.actions;
 
-import javax.tools.FileObject;
 import net.kiar.pojomaker.ui.JsonToPojoWizard;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionRegistration;
+import org.openide.filesystems.FileObject;
 import org.openide.loaders.DataObject;
 import org.openide.nodes.Children;
 import org.openide.nodes.Node;
@@ -25,15 +25,15 @@ public final class NewFromJsonSourceFolderAction extends NodeAction {
     @Override
     protected void performAction(Node[] activatedNodes) {
         String packageName = null;
+        FileObject primary = null;
         if (activatedNodes != null && activatedNodes.length > 0) {
             packageName = activatedNodes[0].getName();
             DataObject dataObject = activatedNodes[0].getLookup().lookup( DataObject.class);
-            System.out.println("Dataobject " +dataObject);
-            System.out.println("folder " +dataObject.getFolder());
-            System.out.println("primaryFile " +dataObject.getPrimaryFile());
-            
+            if (dataObject != null) {
+                primary = dataObject.getPrimaryFile();
+            }
         }
-        JsonToPojoWizard.startWizard(null, packageName);
+        JsonToPojoWizard.startWizard(null, packageName, primary);
     }
 
     @Override

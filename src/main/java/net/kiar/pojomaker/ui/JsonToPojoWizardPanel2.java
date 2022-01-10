@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/NetBeansModuleDevelopment-files/wizardPanel.java to edit this template
- */
 package net.kiar.pojomaker.ui;
 
 import javax.swing.event.ChangeListener;
@@ -15,6 +11,12 @@ public class JsonToPojoWizardPanel2 implements WizardDescriptor.Panel<WizardDesc
      * component from this class, just use getComponent().
      */
     private JsonToPojoVisualPanel2 component;
+    
+    private final JsonToPojoWizardData data;
+
+    public JsonToPojoWizardPanel2(JsonToPojoWizardData data) {
+        this.data = data;
+    }
 
     // Get the visual component for the panel. In this template, the component
     // is kept separate. This can be more efficient: if the wizard is created
@@ -56,17 +58,13 @@ public class JsonToPojoWizardPanel2 implements WizardDescriptor.Panel<WizardDesc
 
     @Override
     public void readSettings(WizardDescriptor wiz) {
-        // use wiz.getProperty to retrieve previous panel state
-        System.out.println("read settings ");
-        component.set( (String) wiz.getProperty(Constants.CLASS_NAME), 
-                       (String) wiz.getProperty(Constants.PACKAGE_NAME));
-        
+        component.set( data.getMainJavaClassName(), data.getPackageName());
     }
 
     @Override
     public void storeSettings(WizardDescriptor wiz) {
-        // use wiz.putProperty to remember current panel state
-        System.out.println("write settings");
+        data.setPackageName( component.getPackageName());
+        data.setMainJavaClassName(component.getMainJavaClassName());
     }
 
 }

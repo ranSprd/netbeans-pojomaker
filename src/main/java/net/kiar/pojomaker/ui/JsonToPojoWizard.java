@@ -1,14 +1,15 @@
 package net.kiar.pojomaker.ui;
 
 import java.awt.Component;
-import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import net.kiar.pojomaker.ClassGenerator;
 import org.openide.DialogDisplayer;
 import org.openide.WizardDescriptor;
+import org.openide.filesystems.FileObject;
 
 /**
  *
@@ -16,10 +17,22 @@ import org.openide.WizardDescriptor;
  */
 public class JsonToPojoWizard {
 
-    public static void startWizard(String mainClassName, String packageName) {
+    public static void startWizard(String mainClassName, String packageName, FileObject folder) {
+        
+        if (folder == null) {
+            JOptionPane.showMessageDialog(null, "Can't locate a working folder", "Internal error", JOptionPane.ERROR_MESSAGE);            
+            return;
+        }
+        
+        JsonToPojoWizardData data = new JsonToPojoWizardData();
+        data.setBaseFolder(folder);
+        data.setMainJavaClassName(mainClassName);
+        data.setPackageName(packageName);
+        
         List<WizardDescriptor.Panel<WizardDescriptor>> panels = new ArrayList<>();
-        panels.add(new JsonToPojoWizardPanel1());
-        panels.add(new JsonToPojoWizardPanel2());
+        panels.add(new JsonToPojoWizardPanel1(data));
+        panels.add(new JsonToPojoWizardPanel2(data));
+        
         String[] steps = new String[panels.size()];
         for (int i = 0; i < panels.size(); i++) {
             Component c = panels.get(i).getComponent();
@@ -38,16 +51,15 @@ public class JsonToPojoWizard {
         // {0} will be replaced by WizardDesriptor.Panel.getComponent().getName()
         wiz.setTitleFormat(new MessageFormat("{0}"));
         wiz.setTitle("Pojo Class Creator");
-        wiz.putProperty(Constants.CLASS_NAME, mainClassName);
-        wiz.putProperty(Constants.PACKAGE_NAME, packageName);
+        
         if (DialogDisplayer.getDefault().notify(wiz) == WizardDescriptor.FINISH_OPTION) {
             // do something
             try {
-                ClassGenerator cg = new ClassGenerator();
-                cg.build((String) wiz.getProperty(Constants.JSON_SOURCE), 
-                        packageName, 
-                        mainClassName);
+                ClassGenerator cg = data.getClassGenerator();
+                cg.build();
             } catch (Exception e) {
+                System.out.println("FEHLER "+e);
+                e.printStackTrace();
             }
         }
         

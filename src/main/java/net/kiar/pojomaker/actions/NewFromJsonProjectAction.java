@@ -51,7 +51,7 @@ public final class NewFromJsonProjectAction extends AbstractAction implements Co
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            JsonToPojoWizard.startWizard(null, null);
+            JsonToPojoWizard.startWizard(null, null,null);
         }
         
     }

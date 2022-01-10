@@ -1,7 +1,6 @@
 package net.kiar.pojomaker.ui;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -26,6 +25,13 @@ public class JsonToPojoWizardPanel1 implements WizardDescriptor.ValidatingPanel<
     private boolean isValid = false;
 
     private List<ChangeListener> changeListeners = new ArrayList<>();
+    
+    private final JsonToPojoWizardData data;
+
+    public JsonToPojoWizardPanel1(JsonToPojoWizardData data) {
+        this.data = data;
+    }
+    
 
     // Get the visual component for the panel. In this template, the component
     // is kept separate. This can be more efficient: if the wizard is created
@@ -119,7 +125,7 @@ public class JsonToPojoWizardPanel1 implements WizardDescriptor.ValidatingPanel<
     @Override
     public void storeSettings(WizardDescriptor wiz) {
         // use wiz.putProperty to remember current panel state
-        wiz.putProperty(Constants.JSON_SOURCE, component.getJsonContent());
+        data.setJsonSource(component.getJsonContent());
     }
 
 }
