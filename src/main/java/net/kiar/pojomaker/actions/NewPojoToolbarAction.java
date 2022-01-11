@@ -10,7 +10,7 @@ import org.openide.util.NbBundle.Messages;
 
 //@ActionID(
 //        category = "File",
-//        id = "net.kiar.pojomaker.NewPojo"
+//        id = "net.kiar.pojomaker.NewPojoToolbarAction"
 //)
 //@ActionRegistration(
 //        iconBase = "json-icon.png",
@@ -18,11 +18,11 @@ import org.openide.util.NbBundle.Messages;
 //)
 //@ActionReference(path = "Toolbars/File", position = 150)
 //@Messages("CTL_NewPojo=New from JSON")
-public final class NewPojo implements ActionListener {
+public final class NewPojoToolbarAction implements ActionListener {
 
     private final Project context;
 
-    public NewPojo(Project context) {
+    public NewPojoToolbarAction(Project context) {
         this.context = context;
     }
 
