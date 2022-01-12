@@ -92,6 +92,11 @@ public class ClassGenerator {
             }
 
             @Override
+            public boolean isIncludeGeneratedAnnotation() {
+                return false;
+            }
+
+            @Override
             public SourceType getSourceType() {
                 return SourceType.JSON;
             }
