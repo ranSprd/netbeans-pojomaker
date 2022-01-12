@@ -90,8 +90,6 @@ public class ClassGenerator {
             public boolean isUsePrimitives() {
                 return true;
             }
-            
-            
 
             @Override
             public SourceType getSourceType() {

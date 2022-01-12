@@ -8,6 +8,7 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import net.kiar.pojomaker.ClassGenerator;
 import org.openide.DialogDisplayer;
+import org.openide.NotifyDescriptor;
 import org.openide.WizardDescriptor;
 import org.openide.filesystems.FileObject;
 
@@ -20,7 +21,10 @@ public class JsonToPojoWizard {
     public static void startWizard(String mainClassName, String packageName, FileObject folder) {
         
         if (folder == null) {
-            JOptionPane.showMessageDialog(null, "Can't locate a working folder", "Internal error", JOptionPane.ERROR_MESSAGE);            
+            DialogDisplayer.getDefault().notify(
+                new NotifyDescriptor.Message("Can't locate working folder", NotifyDescriptor.ERROR_MESSAGE)
+            );
+//            JOptionPane.showMessageDialog(null, "Can't locate a working folder", "Internal error", JOptionPane.ERROR_MESSAGE);            
             return;
         }
         
