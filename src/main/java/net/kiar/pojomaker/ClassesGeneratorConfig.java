@@ -10,6 +10,9 @@ import org.jsonschema2pojo.SourceType;
 public class ClassesGeneratorConfig extends DefaultGenerationConfig {
 
     private boolean generateBuilder = false;
+    private boolean includeSetters = true;
+    private boolean includeGetters = true;
+    
     private boolean includeAdditionalProperties;
     private boolean includeToString;
     private boolean includeHashcodeAndEquals;
@@ -82,13 +85,22 @@ public class ClassesGeneratorConfig extends DefaultGenerationConfig {
 
     @Override
     public boolean isIncludeSetters() {
-        return super.isIncludeSetters(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return includeSetters;
     }
 
+    public void setIncludeSetters(boolean includeSetters) {
+        this.includeSetters = includeSetters;
+    }
+    
     @Override
     public boolean isIncludeGetters() {
-        return super.isIncludeGetters(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return includeGetters;
     }
+
+    public void setIncludeGetters(boolean includeGetters) {
+        this.includeGetters = includeGetters;
+    }
+    
 
     @Override
     public boolean isIncludeConstructors() {
