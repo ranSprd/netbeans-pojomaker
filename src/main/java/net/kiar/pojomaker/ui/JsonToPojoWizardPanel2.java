@@ -59,12 +59,14 @@ public class JsonToPojoWizardPanel2 implements WizardDescriptor.Panel<WizardDesc
     @Override
     public void readSettings(WizardDescriptor wiz) {
         component.set( data.getMainJavaClassName(), data.getPackageName());
+        component.readFromConfig(data.getConfig());
     }
 
     @Override
     public void storeSettings(WizardDescriptor wiz) {
         data.setPackageName( component.getPackageName());
         data.setMainJavaClassName(component.getMainJavaClassName());
+        component.writeToConfig(data.getConfig());
     }
 
 }

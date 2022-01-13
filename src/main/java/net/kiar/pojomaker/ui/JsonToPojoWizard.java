@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
-import net.kiar.pojomaker.ClassGenerator;
+import net.kiar.pojomaker.ClassesGenerator;
 import org.openide.DialogDisplayer;
 import org.openide.NotifyDescriptor;
 import org.openide.WizardDescriptor;
@@ -59,7 +59,7 @@ public class JsonToPojoWizard {
         if (DialogDisplayer.getDefault().notify(wiz) == WizardDescriptor.FINISH_OPTION) {
             // do something
             try {
-                ClassGenerator cg = data.getClassGenerator();
+                ClassesGenerator cg = data.getClassGenerator();
                 cg.build();
             } catch (Exception e) {
                 System.out.println("FEHLER "+e);

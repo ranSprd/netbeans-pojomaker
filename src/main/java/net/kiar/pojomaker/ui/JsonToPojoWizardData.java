@@ -1,7 +1,7 @@
 package net.kiar.pojomaker.ui;
 
-import net.kiar.pojomaker.ClassGenerator;
-import org.openide.WizardDescriptor;
+import net.kiar.pojomaker.ClassesGenerator;
+import net.kiar.pojomaker.ClassesGeneratorConfig;
 import org.openide.filesystems.FileObject;
 
 /**
@@ -10,21 +10,25 @@ import org.openide.filesystems.FileObject;
  */
 public class JsonToPojoWizardData {
     
-    private ClassGenerator classGenerator;
+    private ClassesGenerator classGenerator;
 
     public JsonToPojoWizardData() {
-        this( new ClassGenerator());
+        this(new ClassesGenerator());
     }
 
     
-    public JsonToPojoWizardData(ClassGenerator classGenerator) {
+    public JsonToPojoWizardData(ClassesGenerator classGenerator) {
         this.classGenerator = classGenerator;
     }
 
-    public ClassGenerator getClassGenerator() {
+    public ClassesGenerator getClassGenerator() {
         return classGenerator;
     }
 
+    public ClassesGeneratorConfig getConfig() {
+        return classGenerator.getConfig();
+    }
+    
     public String getJsonSource() {
         return classGenerator.getJsonSource();
     }

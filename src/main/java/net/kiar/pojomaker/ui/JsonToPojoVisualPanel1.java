@@ -27,13 +27,16 @@ public final class JsonToPojoVisualPanel1 extends JPanel {
         return "add json";
     }
     
-//    public boolean hasJsonContent() {
-//        return false;
-////        return StringUtils.isNoneBlank( jTextPane1.getText());
-//    }
+    public boolean hasJsonContent() {
+        return StringUtils.isNoneBlank( jTextArea1.getText());
+    }
     
     public String getJsonContent() {
         return jTextArea1.getText();
+    }
+    
+    public void setJsonContent(String input) {
+        jTextArea1.setText(input);
     }
     
     public void addDocumentListener(DocumentListener listener) {

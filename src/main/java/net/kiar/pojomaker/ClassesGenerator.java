@@ -6,13 +6,11 @@ import com.sun.codemodel.JPackage;
 import com.sun.codemodel.JType;
 import java.io.IOException;
 import java.io.OutputStream;
-import org.jsonschema2pojo.DefaultGenerationConfig;
 import org.jsonschema2pojo.GenerationConfig;
 import org.jsonschema2pojo.NoopAnnotator;
 import org.jsonschema2pojo.SchemaGenerator;
 import org.jsonschema2pojo.SchemaMapper;
 import org.jsonschema2pojo.SchemaStore;
-import org.jsonschema2pojo.SourceType;
 import org.jsonschema2pojo.rules.RuleFactory;
 import org.openide.filesystems.FileObject;
 
@@ -20,14 +18,16 @@ import org.openide.filesystems.FileObject;
  *
  * @author ran
  */
-public class ClassGenerator {
-    
+public class ClassesGenerator {
+
     private String jsonSource;
     private String packageName;
     private String mainJavaClassName;
+
+    private FileObject baseFolder;
     
-    private FileObject baseFolder; 
-    
+    private final ClassesGeneratorConfig config = new ClassesGeneratorConfig();
+
     public String getJsonSource() {
         return jsonSource;
     }
@@ -59,60 +59,27 @@ public class ClassGenerator {
     public void setBaseFolder(FileObject baseFolder) {
         this.baseFolder = baseFolder;
     }
-    
+
+    public ClassesGeneratorConfig getConfig() {
+        return config;
+    }
 
     public void build() throws IOException {
-        
+
         JCodeModel jcodeModel = new JCodeModel();
 
-        GenerationConfig config = new DefaultGenerationConfig() {
-            @Override
-            public boolean isGenerateBuilders() {
-                return false;
-            }
-
-            @Override
-            public boolean isIncludeAdditionalProperties() {
-                return false;
-            }
-
-            @Override
-            public boolean isIncludeToString() {
-                return false;
-            }
-
-            @Override
-            public boolean isIncludeHashcodeAndEquals() {
-                return false;
-            }
-
-            @Override
-            public boolean isUsePrimitives() {
-                return true;
-            }
-
-            @Override
-            public boolean isIncludeGeneratedAnnotation() {
-                return false;
-            }
-
-            @Override
-            public SourceType getSourceType() {
-                return SourceType.JSON;
-            }
-        };
-
         SchemaMapper mapper = new SchemaMapper(
-                new RuleFactory(config, 
+                new RuleFactory(config,
                         new NoopAnnotator(),
-//                                 new Jackson2Annotator(config), 
-                                 new SchemaStore()), 
-                                 new SchemaGenerator());
-        
+                        //                                 new Jackson2Annotator(config), 
+                        new SchemaStore()),
+                new SchemaGenerator());
+
         JType result = mapper.generate(jcodeModel, mainJavaClassName, packageName, jsonSource);
 
         CodeWriter cw = new CodeWriter() {
-            private OutputStream lastOpened =null;
+            private OutputStream lastOpened = null;
+
             @Override
             public OutputStream openBinary(JPackage pkg, String fileName) throws IOException {
                 close();

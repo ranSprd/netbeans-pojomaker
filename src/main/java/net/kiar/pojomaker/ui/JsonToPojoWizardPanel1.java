@@ -41,6 +41,9 @@ public class JsonToPojoWizardPanel1 implements WizardDescriptor.ValidatingPanel<
     public JsonToPojoVisualPanel1 getComponent() {
         if (component == null) {
             component = new JsonToPojoVisualPanel1();
+            if (component.hasJsonContent()) {
+                isValid = true;
+            }
             component.addDocumentListener(new DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -119,12 +122,11 @@ public class JsonToPojoWizardPanel1 implements WizardDescriptor.ValidatingPanel<
 
     @Override
     public void readSettings(WizardDescriptor wiz) {
-        // use wiz.getProperty to retrieve previous panel state
+//        component.setJsonContent( data.getJsonSource());
     }
 
     @Override
     public void storeSettings(WizardDescriptor wiz) {
-        // use wiz.putProperty to remember current panel state
         data.setJsonSource(component.getJsonContent());
     }
 
