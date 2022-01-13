@@ -11,14 +11,14 @@ import org.openide.awt.ActionRegistration;
 import org.openide.util.ContextAwareAction;
 import org.openide.util.Lookup;
 
-@ActionID(
-        category = "File",
-        id = "net.kiar.pojomaker.NewFromJsonProjectAction"
-)
-@ActionRegistration(
-        displayName = "#CTL_NewFromJsonProjectAction", lazy = true
-)
-@ActionReference(path="Projects/org-netbeans-modules-maven/Actions", position=150)
+//@ActionID(
+//        category = "File",
+//        id = "net.kiar.pojomaker.NewFromJsonProjectAction"
+//)
+//@ActionRegistration(
+//        displayName = "#CTL_NewFromJsonProjectAction", lazy = true
+//)
+//@ActionReference(path="Projects/org-netbeans-modules-maven/Actions", position=150)
 public final class NewFromJsonProjectAction extends AbstractAction implements ContextAwareAction  {
 
 //    private final Project context;
