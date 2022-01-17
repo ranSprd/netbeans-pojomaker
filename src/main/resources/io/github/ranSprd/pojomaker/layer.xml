@@ -3,17 +3,17 @@
 <filesystem>
     <folder name="Actions">
 <!--        <folder name="File">
-            <file name="net-kiar-pojomaker-NewFromJsonProjectAction.instance">
+            <file name="io-github-ranSprd-pojomaker-NewFromJsonProjectAction.instance">
                 <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.alwaysEnabled"/>
                 <attr name="noIconInMenu" boolvalue="false"/>
             </file>
-            <file name="net-kiar-pojomaker-NewFromJsonProjectAction.instance_hidden"/>
+            <file name="io-github-ranSprd-pojomaker-NewFromJsonProjectAction.instance_hidden"/>
         </folder>-->
 <!--        <folder name="package">
             <folder name="Actions">
-                <file name="net-kiar-pojomaker-NewFromJsonProjectAction.shadow">
+                <file name="io-github-ranSprd-pojomaker-NewFromJsonProjectAction.shadow">
                     org.netbeans.modules.selenium2.RunSeleniumTestsAction
-                    <attr name="originalFile" stringvalue="Actions/File/net-kiar-pojomaker-NewFromJsonProjectAction.instance"/>
+                    <attr name="originalFile" stringvalue="Actions/File/io-github-ranSprd-pojomaker-NewFromJsonProjectAction.instance"/>
                     <attr intvalue="99" name="position"/>
                 </file>
             </folder>

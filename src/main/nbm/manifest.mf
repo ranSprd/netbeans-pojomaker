@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
-OpenIDE-Module-Layer: net/kiar/pojomaker/layer.xml
-OpenIDE-Module-Localizing-Bundle: net/kiar/pojomaker/Bundle.properties
+OpenIDE-Module-Layer: io/github/ranSprd/pojomaker/layer.xml
+OpenIDE-Module-Localizing-Bundle: io/github/ranSprd/pojomaker/Bundle.properties
 
