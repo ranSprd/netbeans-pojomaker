@@ -1,4 +1,4 @@
-package net.kiar.pojomaker.ui;
+package io.github.ranSprd.pojomaker.ui;
 
 import javax.swing.event.ChangeListener;
 import org.openide.WizardDescriptor;

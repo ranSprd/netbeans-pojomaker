@@ -1,4 +1,4 @@
-package net.kiar.pojomaker;
+package io.github.ranSprd.pojomaker;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

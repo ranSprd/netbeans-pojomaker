@@ -1,7 +1,7 @@
-package net.kiar.pojomaker.ui;
+package io.github.ranSprd.pojomaker.ui;
 
-import net.kiar.pojomaker.ClassesGenerator;
-import net.kiar.pojomaker.ClassesGeneratorConfig;
+import io.github.ranSprd.pojomaker.ClassesGenerator;
+import io.github.ranSprd.pojomaker.ClassesGeneratorConfig;
 import org.openide.filesystems.FileObject;
 
 /**

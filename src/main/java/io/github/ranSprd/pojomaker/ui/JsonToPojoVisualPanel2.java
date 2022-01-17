@@ -1,9 +1,9 @@
-package net.kiar.pojomaker.ui;
+package io.github.ranSprd.pojomaker.ui;
 
 import javax.swing.JPanel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import net.kiar.pojomaker.ClassesGeneratorConfig;
+import io.github.ranSprd.pojomaker.ClassesGeneratorConfig;
 import org.apache.commons.lang3.StringUtils;
 
 public final class JsonToPojoVisualPanel2 extends JPanel {

@@ -1,4 +1,4 @@
-package net.kiar.pojomaker.ui;
+package io.github.ranSprd.pojomaker.ui;
 
 import java.awt.Component;
 import java.text.MessageFormat;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
-import net.kiar.pojomaker.ClassesGenerator;
+import io.github.ranSprd.pojomaker.ClassesGenerator;
 import org.openide.DialogDisplayer;
 import org.openide.NotifyDescriptor;
 import org.openide.WizardDescriptor;

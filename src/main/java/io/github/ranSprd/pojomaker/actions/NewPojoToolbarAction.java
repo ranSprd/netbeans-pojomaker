@@ -1,4 +1,4 @@
-package net.kiar.pojomaker.actions;
+package io.github.ranSprd.pojomaker.actions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +10,7 @@ import org.openide.util.NbBundle.Messages;
 
 //@ActionID(
 //        category = "File",
-//        id = "net.kiar.pojomaker.NewPojoToolbarAction"
+//        id = "io.github.ranSprd.pojomaker.NewPojoToolbarAction"
 //)
 //@ActionRegistration(
 //        iconBase = "json-icon.png",

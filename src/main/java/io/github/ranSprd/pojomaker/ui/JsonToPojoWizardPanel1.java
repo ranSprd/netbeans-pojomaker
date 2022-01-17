@@ -1,4 +1,4 @@
-package net.kiar.pojomaker.ui;
+package io.github.ranSprd.pojomaker.ui;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;

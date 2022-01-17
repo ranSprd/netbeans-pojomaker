@@ -1,8 +1,8 @@
-package net.kiar.pojomaker.actions;
+package io.github.ranSprd.pojomaker.actions;
 
 import java.io.File;
 import java.util.Optional;
-import net.kiar.pojomaker.ui.JsonToPojoWizard;
+import io.github.ranSprd.pojomaker.ui.JsonToPojoWizard;
 import org.apache.commons.lang3.StringUtils;
 import org.netbeans.api.java.classpath.ClassPath;
 import org.netbeans.api.project.FileOwnerQuery;
@@ -21,7 +21,7 @@ import org.openide.util.actions.NodeAction;
 
 @ActionID(
         category = "File",
-        id = "net.kiar.pojomaker.NewFromJsonSourceFolderAction"
+        id = "io.github.ranSprd.pojomaker.NewFromJsonSourceFolderAction"
 )
 @ActionRegistration(
         displayName = "#CTL_NewFromJsonSourceFolderAction", lazy = true

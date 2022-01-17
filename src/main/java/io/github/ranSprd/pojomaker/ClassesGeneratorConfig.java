@@ -1,4 +1,4 @@
-package net.kiar.pojomaker;
+package io.github.ranSprd.pojomaker;
 
 import org.jsonschema2pojo.DefaultGenerationConfig;
 import org.jsonschema2pojo.SourceType;

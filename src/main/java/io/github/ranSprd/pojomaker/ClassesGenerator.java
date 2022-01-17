@@ -1,4 +1,4 @@
-package net.kiar.pojomaker;
+package io.github.ranSprd.pojomaker;
 
 import com.sun.codemodel.CodeWriter;
 import com.sun.codemodel.JCodeModel;

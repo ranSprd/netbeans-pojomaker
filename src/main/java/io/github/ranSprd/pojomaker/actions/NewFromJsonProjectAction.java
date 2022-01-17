@@ -1,6 +1,6 @@
-package net.kiar.pojomaker.actions;
+package io.github.ranSprd.pojomaker.actions;
 
-import net.kiar.pojomaker.ui.JsonToPojoWizard;
+import io.github.ranSprd.pojomaker.ui.JsonToPojoWizard;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -13,7 +13,7 @@ import org.openide.util.Lookup;
 
 //@ActionID(
 //        category = "File",
-//        id = "net.kiar.pojomaker.NewFromJsonProjectAction"
+//        id = "io.github.ranSprd.pojomaker.NewFromJsonProjectAction"
 //)
 //@ActionRegistration(
 //        displayName = "#CTL_NewFromJsonProjectAction", lazy = true
