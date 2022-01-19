@@ -13,4 +13,14 @@ After installation of the nbm file you can find the plugin in action in the cont
 
 # Changelog
 
+0.3.3 version release in central maven repository and available in Netbeans Plugins
 0.1.0 first version
+
+# Developement
+
+## release
+
+Follow the instruction given at [sonatype](https://central.sonatype.org/publish/publish-maven/) 
+and prepare your gpg key. For a release type
+
+    mvn clean deploy
