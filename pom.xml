@@ -8,7 +8,13 @@
   
   <name>PojoMaker ${project.version}</name>
   <description>This plugin is a small integrated interface of jsonschema2pojo which generates simple Java classes from Json snippets.</description>
-  
+ <developers>
+        <developer>
+            <id>ranSprd</id>
+            <name>kiar</name>
+            <url>https://github.com/ranSprd</url>
+        </developer>
+    </developers>  
   <licenses>
     <license>
       <name>Apache License Version 2.0</name>
@@ -21,6 +27,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
+  <scm>
+    <connection>scm:git:https://github.com/ranSprd/netbeans-pojomaker.git</connection>
+    <developerConnection>scm:git:https://github.com/ranSprd/netbeans-pojomaker.git</developerConnection>
+    <url>https://github.com/netbeans-pojomaker/tree/${project.scm.tag}</url>
+    <tag>master</tag>
+  </scm>  
+  
   <distributionManagement>
     <snapshotRepository>
       <id>ossrh</id>
@@ -31,7 +44,7 @@
       <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
     </repository>  
   </distributionManagement>  
-  
+
   
   <dependencies>
     <dependency>
