@@ -3,18 +3,21 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.ranSprd</groupId>
   <artifactId>netbeans-pojoMaker</artifactId>
-  <version>0.3.2-SNAPSHOT</version>
+  <version>0.3.3</version>
   <packaging>nbm</packaging>
   
-  <name>PojoMaker ${project.version}</name>
+  <name>NB PojoMaker ${project.version}</name>
   <description>This plugin is a small integrated interface of jsonschema2pojo which generates simple Java classes from Json snippets.</description>
- <developers>
-        <developer>
-            <id>ranSprd</id>
-            <name>kiar</name>
-            <url>https://github.com/ranSprd</url>
-        </developer>
-    </developers>  
+  <url>https://github.com/ranSprd/netbeans-pojomaker</url>
+  
+  <developers>
+    <developer>
+      <id>ranSprd</id>
+      <name>kiar</name>
+      <url>https://github.com/ranSprd</url>
+    </developer>
+  </developers>  
+  
   <licenses>
     <license>
       <name>Apache License Version 2.0</name>
@@ -166,7 +169,7 @@
       <artifactId>org-netbeans-api-java-classpath</artifactId>
       <version>RELEASE126</version>
     </dependency>
-<!--    <dependency>
+    <!--    <dependency>
       <groupId>org.netbeans.modules</groupId>
       <artifactId>org-netbeans-modules-java-j2seproject</artifactId>
       <version>RELEASE126</version>
@@ -211,7 +214,7 @@
         <artifactId>maven-release-plugin</artifactId>
         <version>3.0.0-M5</version>
         <configuration>
-           <!--upgrade MINOR instead of PATCH--> 
+          <!--upgrade MINOR instead of PATCH--> 
           <projectVersionPolicyId>SemVerVersionPolicy</projectVersionPolicyId>
           <pushChanges>false</pushChanges>
           <localCheckout>true</localCheckout>
