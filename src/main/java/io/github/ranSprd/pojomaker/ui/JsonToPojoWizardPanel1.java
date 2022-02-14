@@ -8,6 +8,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import org.jsonschema2pojo.SourceType;
 import org.openide.WizardDescriptor;
 import org.openide.WizardValidationException;
 import org.openide.util.HelpCtx;
@@ -127,7 +128,6 @@ public class JsonToPojoWizardPanel1 implements WizardDescriptor.ValidatingPanel<
 
     @Override
     public void storeSettings(WizardDescriptor wiz) {
-        data.setJsonSource(component.getJsonContent());
+        data.setJsonSource(component.getJsonContent(), component.getSourceType());
     }
-
 }

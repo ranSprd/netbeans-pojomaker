@@ -6,11 +6,11 @@ import com.sun.codemodel.JPackage;
 import com.sun.codemodel.JType;
 import java.io.IOException;
 import java.io.OutputStream;
-import org.jsonschema2pojo.GenerationConfig;
 import org.jsonschema2pojo.NoopAnnotator;
 import org.jsonschema2pojo.SchemaGenerator;
 import org.jsonschema2pojo.SchemaMapper;
 import org.jsonschema2pojo.SchemaStore;
+import org.jsonschema2pojo.SourceType;
 import org.jsonschema2pojo.rules.RuleFactory;
 import org.openide.filesystems.FileObject;
 
@@ -32,8 +32,9 @@ public class ClassesGenerator {
         return jsonSource;
     }
 
-    public void setJsonSource(String jsonSource) {
+    public void setJsonSource(String jsonSource, SourceType sourceType) {
         this.jsonSource = jsonSource;
+        this.config.setSourceType(sourceType);
     }
 
     public String getPackageName() {
@@ -76,7 +77,7 @@ public class ClassesGenerator {
                 new SchemaGenerator());
 
         JType result = mapper.generate(jcodeModel, mainJavaClassName, packageName, jsonSource);
-
+        
         CodeWriter cw = new CodeWriter() {
             private OutputStream lastOpened = null;
 
@@ -84,7 +85,7 @@ public class ClassesGenerator {
             public OutputStream openBinary(JPackage pkg, String fileName) throws IOException {
                 close();
                 lastOpened = baseFolder.createAndOpen(fileName);
-//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//                throw new UnsupportedOperationException("Not supported yet."); 
 //                return null;
                 return lastOpened;
             }

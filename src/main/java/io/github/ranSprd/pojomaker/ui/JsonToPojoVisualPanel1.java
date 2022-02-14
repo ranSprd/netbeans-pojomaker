@@ -1,16 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/NetBeansModuleDevelopment-files/visualPanel.java to edit this template
- */
 package io.github.ranSprd.pojomaker.ui;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
-import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.text.Document;
 import org.apache.commons.lang3.StringUtils;
+import org.jsonschema2pojo.SourceType;
 
 public final class JsonToPojoVisualPanel1 extends JPanel {
     private static final Logger logger = Logger.getLogger(JsonToPojoVisualPanel1.class.getName());    
@@ -39,6 +33,16 @@ public final class JsonToPojoVisualPanel1 extends JPanel {
         jTextArea1.setText(input);
     }
     
+    public SourceType getSourceType() {
+        switch( inputFormatList.getSelectedIndex()) {
+            case 0 : return SourceType.JSONSCHEMA;
+            case 1 : return SourceType.JSON;
+            case 2 : return SourceType.YAMLSCHEMA;
+            case 3 : return SourceType.YAML;
+            default : return SourceType.JSON;
+        }
+    }
+    
     public void addDocumentListener(DocumentListener listener) {
         jTextArea1.getDocument().addDocumentListener(listener);
 //        jTextPane1.getDocument().addDocumentListener(listener);
@@ -57,6 +61,8 @@ public final class JsonToPojoVisualPanel1 extends JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
+        formatLabel = new javax.swing.JLabel();
+        inputFormatList = new javax.swing.JComboBox<>();
 
         org.openide.awt.Mnemonics.setLocalizedText(jLabel1, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel1.class, "JsonToPojoVisualPanel1.jLabel1.text")); // NOI18N
 
@@ -68,6 +74,11 @@ public final class JsonToPojoVisualPanel1 extends JPanel {
         jScrollPane2.setViewportView(jTextArea1);
 
         org.openide.awt.Mnemonics.setLocalizedText(jLabel3, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel1.class, "JsonToPojoVisualPanel1.jLabel3.text")); // NOI18N
+
+        org.openide.awt.Mnemonics.setLocalizedText(formatLabel, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel1.class, "JsonToPojoVisualPanel1.formatLabel.text")); // NOI18N
+
+        inputFormatList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JSON schema", "JSON ", "YAML schema", "YAML" }));
+        inputFormatList.setSelectedIndex(1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -82,10 +93,15 @@ public final class JsonToPojoVisualPanel1 extends JPanel {
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2)
-                            .addComponent(jLabel2)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(formatLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(inputFormatList, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -96,14 +112,19 @@ public final class JsonToPojoVisualPanel1 extends JPanel {
                 .addGap(4, 4, 4)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(formatLabel)
+                    .addComponent(inputFormatList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel formatLabel;
+    private javax.swing.JComboBox<String> inputFormatList;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

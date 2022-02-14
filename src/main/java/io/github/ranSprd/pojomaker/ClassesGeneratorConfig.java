@@ -22,6 +22,8 @@ public class ClassesGeneratorConfig extends DefaultGenerationConfig {
     private String classNamePrefix = "";
     private String classNameSuffix = "DTO";
     
+    private SourceType sourceType = SourceType.JSON;
+    
 
     @Override
     public boolean isGenerateBuilders() {
@@ -56,9 +58,13 @@ public class ClassesGeneratorConfig extends DefaultGenerationConfig {
 
     @Override
     public SourceType getSourceType() {
-        return SourceType.JSON;
+        return sourceType;
     }
 
+    public void setSourceType(SourceType sourceType) {
+        this.sourceType = sourceType;
+    }
+    
     public void setGenerateBuilder(boolean generateBuilder) {
         this.generateBuilder = generateBuilder;
     }

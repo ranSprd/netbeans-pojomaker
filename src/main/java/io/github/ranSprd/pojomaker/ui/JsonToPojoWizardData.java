@@ -2,6 +2,7 @@ package io.github.ranSprd.pojomaker.ui;
 
 import io.github.ranSprd.pojomaker.ClassesGenerator;
 import io.github.ranSprd.pojomaker.ClassesGeneratorConfig;
+import org.jsonschema2pojo.SourceType;
 import org.openide.filesystems.FileObject;
 
 /**
@@ -33,8 +34,8 @@ public class JsonToPojoWizardData {
         return classGenerator.getJsonSource();
     }
 
-    public void setJsonSource(String jsonSource) {
-        classGenerator.setJsonSource(jsonSource);
+    public void setJsonSource(String jsonSource, SourceType sourceType) {
+        classGenerator.setJsonSource(jsonSource, sourceType);
     }
 
     public String getPackageName() {
