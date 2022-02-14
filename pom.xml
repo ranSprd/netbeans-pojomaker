@@ -53,7 +53,7 @@
     <dependency>
       <groupId>org.netbeans.api</groupId>
       <artifactId>org-netbeans-api-annotations-common</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE110</version>
     </dependency>
     
     <dependency>
