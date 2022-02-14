@@ -13,8 +13,11 @@ After installation of the nbm file you can find the plugin in action in the cont
 
 # Changelog
 
-0.3.3 version release in central maven repository and available in Netbeans Plugins
-0.1.0 first version
+- 0.4.0
+    - set a class name prefix
+    - type of source (schema, json, yaml)
+- 0.3.3 version release in central maven repository and available in Netbeans Plugins
+- 0.1.0 first version
 
 # Developement
 
