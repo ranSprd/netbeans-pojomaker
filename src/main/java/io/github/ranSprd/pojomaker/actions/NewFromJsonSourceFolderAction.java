@@ -82,9 +82,9 @@ public final class NewFromJsonSourceFolderAction extends NodeAction {
         }
         ClassPath cPath = ClassPath.getClassPath(folderObject, ClassPath.SOURCE);
         if (cPath != null) {
-            String relativePath = cPath.getResourceName(folderObject);
-            if (StringUtils.isNotBlank(relativePath)) {
-                return Optional.of( relativePath.replaceAll(File.separator, "."));
+            String resourceName = cPath.getResourceName(folderObject);
+            if (StringUtils.isNotBlank(resourceName)) {
+                return Optional.of( resourceName.replaceAll("/", "."));
             }
         }
         return Optional.of( folderObject.getName().replaceAll(File.separator, "."));
