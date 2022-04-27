@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.ranSprd</groupId>
   <artifactId>netbeans-pojoMaker</artifactId>
-  <version>0.4.0-SNAPSHOT</version>
+  <version>0.4.0</version>
   <packaging>nbm</packaging>
   
   <name>NB PojoMaker ${project.version}</name>
@@ -34,7 +34,7 @@
     <connection>scm:git:git@github.com:ranSprd/netbeans-pojomaker.git</connection>
     <developerConnection>scm:git:git@github.com:ranSprd/netbeans-pojomaker.git</developerConnection>
     <url>https://github.com/netbeans-pojomaker/tree/${project.scm.tag}</url>
-    <tag>master</tag>
+    <tag>netbeans-pojoMaker-0.4.0</tag>
   </scm>  
   
   <distributionManagement>
