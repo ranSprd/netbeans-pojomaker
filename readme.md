@@ -1,3 +1,6 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ranSprd_netbeans-pojomaker&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ranSprd_netbeans-pojomaker)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.ranSprd/netbeans-pojoMaker.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.ranSprd%22%20AND%20a:%22netbeans-pojoMaker%22)
+
 Netbeans PojoMaker Plugin
 =========================
 
@@ -13,7 +16,7 @@ After installation of the nbm file you can find the plugin in action in the cont
 
 # Changelog
 
-- 0.4.0
+- 0.4.3
     - set a class name prefix
     - type of source (schema, json, yaml)
     - more generator options
@@ -29,3 +32,11 @@ Follow the instruction given at [sonatype](https://central.sonatype.org/publish/
 and prepare your gpg key. For a release type
 
     mvn clean deploy
+
+## How to Contribute
+
+Just submit a PR! :)
+
+## License
+
+This software is licensed under the [Apache 2.0 License](LICENSE).
