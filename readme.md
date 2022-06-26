@@ -16,6 +16,10 @@ After installation of the nbm file you can find the plugin in action in the cont
 
 # Changelog
 
+- 0.4.4
+    - add tooltip text in UI to give more help
+    - add 'use Optionals for Getters' and 'add Constructors' options for generator in UI
+    - ensure NB 14 compatibility
 - 0.4.3
     - set a class name prefix
     - type of source (schema, json, yaml)
