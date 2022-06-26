@@ -55,9 +55,13 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
         primitiveTypesCheckBox.setSelected( config.isUsePrimitives());
         hashCodeCheckBox.setSelected( config.isIncludeHashcodeAndEquals());
         toStringCheckBox.setSelected( config.isIncludeToString());
-        useBuilders.setSelected(config.isGenerateBuilders());
         useSetters.setSelected(config.isIncludeSetters());
+        useBuilders.setEnabled( config.isIncludeSetters());
+        useBuilders.setSelected(config.isGenerateBuilders());
         useGetters.setSelected(config.isIncludeGetters());
+        useOptional.setEnabled(config.isIncludeGetters());
+        useOptional.setSelected( config.isUseOptionalForGetters());
+        addConstructor.setSelected(config.isIncludeConstructors());
         
         classNameSuffixField.setText( config.getClassNameSuffix());
         
@@ -73,6 +77,8 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
         config.setGenerateBuilder( useBuilders.isSelected());
         config.setIncludeSetters( useSetters.isSelected());
         config.setIncludeGetters( useGetters.isSelected());
+        config.setUseOptionalForGetters(useOptional.isSelected());
+        config.setIncludeConstructors( addConstructor.isSelected());
         
         config.setClassNameSuffix( classNameSuffixField.getText());
     }
@@ -106,6 +112,9 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
         useBuilders = new javax.swing.JCheckBox();
         useSetters = new javax.swing.JCheckBox();
         useGetters = new javax.swing.JCheckBox();
+        useOptional = new javax.swing.JCheckBox();
+        jLabel3 = new javax.swing.JLabel();
+        addConstructor = new javax.swing.JCheckBox();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.jPanel1.border.title"))); // NOI18N
 
@@ -202,6 +211,7 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
         additionalPropertiesCheckBox.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.additionalPropertiesCheckBox.toolTipText")); // NOI18N
 
         org.openide.awt.Mnemonics.setLocalizedText(toStringCheckBox, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.toStringCheckBox.text")); // NOI18N
+        toStringCheckBox.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.toStringCheckBox.toolTipText")); // NOI18N
         toStringCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 toStringCheckBoxActionPerformed(evt);
@@ -209,17 +219,48 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
         });
 
         org.openide.awt.Mnemonics.setLocalizedText(hashCodeCheckBox, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.hashCodeCheckBox.text")); // NOI18N
+        hashCodeCheckBox.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.hashCodeCheckBox.toolTipText")); // NOI18N
 
         org.openide.awt.Mnemonics.setLocalizedText(generatorCheckBox, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.generatorCheckBox.text")); // NOI18N
+        generatorCheckBox.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.generatorCheckBox.toolTipText")); // NOI18N
 
         org.openide.awt.Mnemonics.setLocalizedText(primitiveTypesCheckBox, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.primitiveTypesCheckBox.text")); // NOI18N
+        primitiveTypesCheckBox.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.primitiveTypesCheckBox.toolTipText")); // NOI18N
 
         org.openide.awt.Mnemonics.setLocalizedText(useBuilders, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useBuilders.text")); // NOI18N
         useBuilders.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useBuilders.toolTipText")); // NOI18N
+        useBuilders.setEnabled(useSetters.isSelected());
+        useBuilders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useBuildersActionPerformed(evt);
+            }
+        });
 
         org.openide.awt.Mnemonics.setLocalizedText(useSetters, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useSetters.text")); // NOI18N
+        useSetters.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useSetters.toolTipText")); // NOI18N
+        useSetters.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useSettersActionPerformed(evt);
+            }
+        });
 
         org.openide.awt.Mnemonics.setLocalizedText(useGetters, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useGetters.text")); // NOI18N
+        useGetters.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useGetters.toolTipText")); // NOI18N
+        useGetters.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useGettersActionPerformed(evt);
+            }
+        });
+
+        org.openide.awt.Mnemonics.setLocalizedText(useOptional, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useOptional.text")); // NOI18N
+        useOptional.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useOptional.toolTipText")); // NOI18N
+        useOptional.setEnabled(useGetters.isSelected());
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        org.openide.awt.Mnemonics.setLocalizedText(jLabel3, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.jLabel3.text")); // NOI18N
+
+        org.openide.awt.Mnemonics.setLocalizedText(addConstructor, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.addConstructor.text")); // NOI18N
+        addConstructor.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.addConstructor.toolTipText")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -228,14 +269,23 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addConstructor)
                     .addComponent(additionalPropertiesCheckBox)
-                    .addComponent(toStringCheckBox)
-                    .addComponent(hashCodeCheckBox)
                     .addComponent(generatorCheckBox)
                     .addComponent(primitiveTypesCheckBox)
-                    .addComponent(useBuilders)
                     .addComponent(useSetters)
-                    .addComponent(useGetters))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(useBuilders)
+                        .addGap(73, 73, 73)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(useOptional))
+                            .addComponent(useGetters)))
+                    .addComponent(toStringCheckBox)
+                    .addComponent(hashCodeCheckBox)
+                    .addComponent(jLabel3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -247,17 +297,23 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
                 .addComponent(generatorCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(primitiveTypesCheckBox)
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hashCodeCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(toStringCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addConstructor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(useSetters)
+                    .addComponent(useGetters))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(useBuilders)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(useSetters)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(useGetters)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(useBuilders)
+                    .addComponent(useOptional))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -285,9 +341,24 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_classNameSuffixFieldActionPerformed
 
+    private void useBuildersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useBuildersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_useBuildersActionPerformed
+
+    private void useGettersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useGettersActionPerformed
+        // TODO add your handling code here:
+        useOptional.setEnabled( useGetters.isSelected());
+    }//GEN-LAST:event_useGettersActionPerformed
+
+    private void useSettersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useSettersActionPerformed
+        // TODO add your handling code here:
+        useBuilders.setEnabled( useSetters.isSelected());
+    }//GEN-LAST:event_useSettersActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel PrefixLabel;
     private javax.swing.JLabel SuffixLabel;
+    private javax.swing.JCheckBox addConstructor;
     private javax.swing.JCheckBox additionalPropertiesCheckBox;
     private javax.swing.JTextField classNamePrefixField;
     private javax.swing.JTextField classNamePreviewField;
@@ -296,6 +367,7 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
     private javax.swing.JCheckBox hashCodeCheckBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -305,6 +377,7 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
     private javax.swing.JCheckBox toStringCheckBox;
     private javax.swing.JCheckBox useBuilders;
     private javax.swing.JCheckBox useGetters;
+    private javax.swing.JCheckBox useOptional;
     private javax.swing.JCheckBox useSetters;
     // End of variables declaration//GEN-END:variables
 

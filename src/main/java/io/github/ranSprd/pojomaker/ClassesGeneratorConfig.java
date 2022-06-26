@@ -12,12 +12,15 @@ public class ClassesGeneratorConfig extends DefaultGenerationConfig {
     private boolean generateBuilder = false;
     private boolean includeSetters = true;
     private boolean includeGetters = true;
+    private boolean useOptionalForGetters = false;
     
     private boolean includeAdditionalProperties;
     private boolean includeToString;
     private boolean includeHashcodeAndEquals;
     private boolean usePrimitives;
     private boolean includeGeneratedAnnotation;
+    
+    private boolean includeConstructors;
     
     private String classNamePrefix = "";
     private String classNameSuffix = "DTO";
@@ -56,6 +59,10 @@ public class ClassesGeneratorConfig extends DefaultGenerationConfig {
         return includeGeneratedAnnotation;
     }
 
+    public void setIncludeGeneratedAnnotation(boolean includeGeneratedAnnotation) {
+        this.includeGeneratedAnnotation = includeGeneratedAnnotation;
+    }
+
     @Override
     public SourceType getSourceType() {
         return sourceType;
@@ -85,10 +92,6 @@ public class ClassesGeneratorConfig extends DefaultGenerationConfig {
         this.usePrimitives = usePrimitives;
     }
 
-    public void setIncludeGeneratedAnnotation(boolean includeGeneratedAnnotation) {
-        this.includeGeneratedAnnotation = includeGeneratedAnnotation;
-    }
-
     @Override
     public boolean isIncludeSetters() {
         return includeSetters;
@@ -106,11 +109,25 @@ public class ClassesGeneratorConfig extends DefaultGenerationConfig {
     public void setIncludeGetters(boolean includeGetters) {
         this.includeGetters = includeGetters;
     }
-    
 
     @Override
     public boolean isIncludeConstructors() {
-        return super.isIncludeConstructors(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return includeConstructors;
+    }
+
+    public void setIncludeConstructors(boolean includeConstructors) {
+        this.includeConstructors = includeConstructors;
+    }
+
+    
+
+    @Override
+    public boolean isUseOptionalForGetters() {
+        return useOptionalForGetters;
+    }
+
+    public void setUseOptionalForGetters(boolean useOptionalForGetters) {
+        this.useOptionalForGetters = useOptionalForGetters;
     }
 
     @Override
