@@ -183,6 +183,8 @@
         <configuration>
           <publicPackages>
             <publicPackage>io.github.ranSprd.pojomaker</publicPackage>
+            <publicPackage>io.github.ranSprd.pojomaker.actions</publicPackage>
+            <publicPackage>io.github.ranSprd.pojomaker.ui</publicPackage>
           </publicPackages>
         </configuration>
       </plugin>
