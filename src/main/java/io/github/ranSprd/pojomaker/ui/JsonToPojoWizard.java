@@ -62,7 +62,7 @@ public class JsonToPojoWizard {
                 ClassesGenerator cg = data.getClassGenerator();
                 cg.build();
             } catch (Exception e) {
-                System.out.println("FEHLER "+e);
+                System.out.println("FAILURE detected "+e);
                 e.printStackTrace();
             }
         }
