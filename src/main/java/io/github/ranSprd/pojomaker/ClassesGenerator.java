@@ -4,8 +4,11 @@ import com.sun.codemodel.CodeWriter;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JPackage;
 import com.sun.codemodel.JType;
+import io.github.ranSprd.pojomaker.extensions.ReducedSchemaAnnotator;
 import java.io.IOException;
 import java.io.OutputStream;
+import org.jsonschema2pojo.Annotator;
+import org.jsonschema2pojo.Jackson2Annotator;
 import org.jsonschema2pojo.NoopAnnotator;
 import org.jsonschema2pojo.SchemaGenerator;
 import org.jsonschema2pojo.SchemaMapper;
@@ -69,10 +72,19 @@ public class ClassesGenerator {
 
         JCodeModel jcodeModel = new JCodeModel();
 
+        Annotator annotator = null;
+        switch (config.getJsonCodeAnnotations()) {
+            case ALL: annotator = new Jackson2Annotator(config);
+                      break;
+            case REDUCED : annotator = new ReducedSchemaAnnotator(new Jackson2Annotator(config), config);
+                           break;
+            case NOTHING:
+                 default: annotator = new NoopAnnotator();
+        }
+        
         SchemaMapper mapper = new SchemaMapper(
                 new RuleFactory(config,
-                        new NoopAnnotator(),
-                        //                                 new Jackson2Annotator(config), 
+                        annotator,
                         new SchemaStore()),
                 new SchemaGenerator());
 

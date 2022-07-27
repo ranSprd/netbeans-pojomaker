@@ -1,6 +1,7 @@
 package io.github.ranSprd.pojomaker;
 
 import org.jsonschema2pojo.DefaultGenerationConfig;
+import org.jsonschema2pojo.InclusionLevel;
 import org.jsonschema2pojo.SourceType;
 
 /**
@@ -8,6 +9,10 @@ import org.jsonschema2pojo.SourceType;
  * @author ran
  */
 public class ClassesGeneratorConfig extends DefaultGenerationConfig {
+    
+    public enum JsonCodeAnnotations {
+        NOTHING, REDUCED, ALL
+    }
 
     private boolean generateBuilder = false;
     private boolean includeSetters = true;
@@ -26,6 +31,9 @@ public class ClassesGeneratorConfig extends DefaultGenerationConfig {
     private String classNameSuffix = "DTO";
     
     private SourceType sourceType = SourceType.JSON;
+    
+    private InclusionLevel inclusionLevel = InclusionLevel.NON_NULL;
+    private JsonCodeAnnotations jsonCodeAnnotations = JsonCodeAnnotations.NOTHING;
     
 
     @Override
@@ -119,8 +127,6 @@ public class ClassesGeneratorConfig extends DefaultGenerationConfig {
         this.includeConstructors = includeConstructors;
     }
 
-    
-
     @Override
     public boolean isUseOptionalForGetters() {
         return useOptionalForGetters;
@@ -147,5 +153,23 @@ public class ClassesGeneratorConfig extends DefaultGenerationConfig {
     public void setClassNamePrefix(String classNamePrefix) {
         this.classNamePrefix = classNamePrefix;
     }
+
+    @Override
+    public InclusionLevel getInclusionLevel() {
+        return inclusionLevel;
+    }
+
+    public void setInclusionLevel(InclusionLevel inclusionLevel) {
+        this.inclusionLevel = inclusionLevel;
+    }
+
+    public JsonCodeAnnotations getJsonCodeAnnotations() {
+        return jsonCodeAnnotations;
+    }
+
+    public void setJsonCodeAnnotations(JsonCodeAnnotations JsonCodeAnnotations) {
+        this.jsonCodeAnnotations = JsonCodeAnnotations;
+    }
+
     
 }

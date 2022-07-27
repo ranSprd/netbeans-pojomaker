@@ -65,6 +65,15 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
         
         classNameSuffixField.setText( config.getClassNameSuffix());
         
+        switch (config.getJsonCodeAnnotations()) {
+            case ALL: fullAnnotationsRadioButton.setSelected(true);
+                      break;
+            case REDUCED : reducedAnnotationsRadioButton.setSelected(true);
+                           break;
+            case NOTHING:
+                 default: noAnnotationsRadioButton.setSelected(true);
+        }
+        
         updateClassNamePreview();
     }
     
@@ -81,6 +90,14 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
         config.setIncludeConstructors( addConstructor.isSelected());
         
         config.setClassNameSuffix( classNameSuffixField.getText());
+        
+        if (fullAnnotationsRadioButton.isSelected()) {
+            config.setJsonCodeAnnotations(ClassesGeneratorConfig.JsonCodeAnnotations.ALL);
+        } else if (reducedAnnotationsRadioButton.isSelected()) {
+            config.setJsonCodeAnnotations(ClassesGeneratorConfig.JsonCodeAnnotations.REDUCED);
+        } else {
+            config.setJsonCodeAnnotations(ClassesGeneratorConfig.JsonCodeAnnotations.NOTHING);
+        }
     }
 
     
@@ -92,6 +109,7 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        annotationButtonGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         mainClassNameField = new javax.swing.JTextField();
@@ -103,18 +121,23 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
         packageNameField = new javax.swing.JTextField();
         PrefixLabel = new javax.swing.JLabel();
         classNamePrefixField = new javax.swing.JTextField();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         additionalPropertiesCheckBox = new javax.swing.JCheckBox();
-        toStringCheckBox = new javax.swing.JCheckBox();
-        hashCodeCheckBox = new javax.swing.JCheckBox();
         generatorCheckBox = new javax.swing.JCheckBox();
         primitiveTypesCheckBox = new javax.swing.JCheckBox();
-        useBuilders = new javax.swing.JCheckBox();
+        jPanel3 = new javax.swing.JPanel();
+        addConstructor = new javax.swing.JCheckBox();
+        toStringCheckBox = new javax.swing.JCheckBox();
+        hashCodeCheckBox = new javax.swing.JCheckBox();
         useSetters = new javax.swing.JCheckBox();
         useGetters = new javax.swing.JCheckBox();
+        useBuilders = new javax.swing.JCheckBox();
         useOptional = new javax.swing.JCheckBox();
-        jLabel3 = new javax.swing.JLabel();
-        addConstructor = new javax.swing.JCheckBox();
+        jPanel4 = new javax.swing.JPanel();
+        noAnnotationsRadioButton = new javax.swing.JRadioButton();
+        reducedAnnotationsRadioButton = new javax.swing.JRadioButton();
+        fullAnnotationsRadioButton = new javax.swing.JRadioButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.jPanel1.border.title"))); // NOI18N
 
@@ -156,7 +179,7 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
                         .addGap(4, 4, 4)
                         .addComponent(classNamePreviewField))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(223, 223, 223))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
@@ -205,10 +228,50 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.jPanel2.border.title"))); // NOI18N
 
         org.openide.awt.Mnemonics.setLocalizedText(additionalPropertiesCheckBox, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.additionalPropertiesCheckBox.text")); // NOI18N
         additionalPropertiesCheckBox.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.additionalPropertiesCheckBox.toolTipText")); // NOI18N
+
+        org.openide.awt.Mnemonics.setLocalizedText(generatorCheckBox, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.generatorCheckBox.text")); // NOI18N
+        generatorCheckBox.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.generatorCheckBox.toolTipText")); // NOI18N
+
+        org.openide.awt.Mnemonics.setLocalizedText(primitiveTypesCheckBox, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.primitiveTypesCheckBox.text")); // NOI18N
+        primitiveTypesCheckBox.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.primitiveTypesCheckBox.toolTipText")); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(additionalPropertiesCheckBox)
+                    .addComponent(generatorCheckBox)
+                    .addComponent(primitiveTypesCheckBox))
+                .addContainerGap(355, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(additionalPropertiesCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(generatorCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(primitiveTypesCheckBox)
+                .addContainerGap(104, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.jPanel2.TabConstraints.tabTitle"), jPanel2); // NOI18N
+        jPanel2.getAccessibleContext().setAccessibleName(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.jPanel2.AccessibleContext.accessibleName")); // NOI18N
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.jPanel3.border.title"))); // NOI18N
+
+        org.openide.awt.Mnemonics.setLocalizedText(addConstructor, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.addConstructor.text")); // NOI18N
+        addConstructor.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.addConstructor.toolTipText")); // NOI18N
 
         org.openide.awt.Mnemonics.setLocalizedText(toStringCheckBox, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.toStringCheckBox.text")); // NOI18N
         toStringCheckBox.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.toStringCheckBox.toolTipText")); // NOI18N
@@ -220,21 +283,6 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
 
         org.openide.awt.Mnemonics.setLocalizedText(hashCodeCheckBox, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.hashCodeCheckBox.text")); // NOI18N
         hashCodeCheckBox.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.hashCodeCheckBox.toolTipText")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(generatorCheckBox, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.generatorCheckBox.text")); // NOI18N
-        generatorCheckBox.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.generatorCheckBox.toolTipText")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(primitiveTypesCheckBox, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.primitiveTypesCheckBox.text")); // NOI18N
-        primitiveTypesCheckBox.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.primitiveTypesCheckBox.toolTipText")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(useBuilders, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useBuilders.text")); // NOI18N
-        useBuilders.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useBuilders.toolTipText")); // NOI18N
-        useBuilders.setEnabled(useSetters.isSelected());
-        useBuilders.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                useBuildersActionPerformed(evt);
-            }
-        });
 
         org.openide.awt.Mnemonics.setLocalizedText(useSetters, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useSetters.text")); // NOI18N
         useSetters.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useSetters.toolTipText")); // NOI18N
@@ -252,84 +300,116 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
             }
         });
 
+        org.openide.awt.Mnemonics.setLocalizedText(useBuilders, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useBuilders.text")); // NOI18N
+        useBuilders.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useBuilders.toolTipText")); // NOI18N
+        useBuilders.setEnabled(useSetters.isSelected());
+        useBuilders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useBuildersActionPerformed(evt);
+            }
+        });
+
         org.openide.awt.Mnemonics.setLocalizedText(useOptional, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useOptional.text")); // NOI18N
         useOptional.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.useOptional.toolTipText")); // NOI18N
         useOptional.setEnabled(useGetters.isSelected());
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        org.openide.awt.Mnemonics.setLocalizedText(jLabel3, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.jLabel3.text")); // NOI18N
-
-        org.openide.awt.Mnemonics.setLocalizedText(addConstructor, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.addConstructor.text")); // NOI18N
-        addConstructor.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.addConstructor.toolTipText")); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(toStringCheckBox)
                     .addComponent(addConstructor)
-                    .addComponent(additionalPropertiesCheckBox)
-                    .addComponent(generatorCheckBox)
-                    .addComponent(primitiveTypesCheckBox)
+                    .addComponent(hashCodeCheckBox)
                     .addComponent(useSetters)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(useBuilders)
                         .addGap(73, 73, 73)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addComponent(useOptional))
-                            .addComponent(useGetters)))
-                    .addComponent(toStringCheckBox)
-                    .addComponent(hashCodeCheckBox)
-                    .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(useGetters))))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(additionalPropertiesCheckBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(generatorCheckBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(primitiveTypesCheckBox)
-                .addGap(14, 14, 14)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hashCodeCheckBox)
+                .addComponent(addConstructor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(toStringCheckBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addConstructor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(hashCodeCheckBox)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(useSetters)
                     .addComponent(useGetters))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(useBuilders)
                     .addComponent(useOptional))
-                .addContainerGap())
+                .addContainerGap(38, Short.MAX_VALUE))
         );
+
+        jTabbedPane1.addTab(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.jPanel3.TabConstraints.tabTitle"), jPanel3); // NOI18N
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.jPanel4.border.title"))); // NOI18N
+
+        annotationButtonGroup.add(noAnnotationsRadioButton);
+        noAnnotationsRadioButton.setSelected(true);
+        org.openide.awt.Mnemonics.setLocalizedText(noAnnotationsRadioButton, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.noAnnotationsRadioButton.text")); // NOI18N
+
+        annotationButtonGroup.add(reducedAnnotationsRadioButton);
+        org.openide.awt.Mnemonics.setLocalizedText(reducedAnnotationsRadioButton, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.reducedAnnotationsRadioButton.text")); // NOI18N
+        reducedAnnotationsRadioButton.setToolTipText(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.reducedAnnotationsRadioButton.toolTipText")); // NOI18N
+
+        annotationButtonGroup.add(fullAnnotationsRadioButton);
+        org.openide.awt.Mnemonics.setLocalizedText(fullAnnotationsRadioButton, org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.fullAnnotationsRadioButton.text")); // NOI18N
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fullAnnotationsRadioButton)
+                    .addComponent(reducedAnnotationsRadioButton)
+                    .addComponent(noAnnotationsRadioButton))
+                .addContainerGap(418, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(noAnnotationsRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(reducedAnnotationsRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fullAnnotationsRadioButton)
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab(org.openide.util.NbBundle.getMessage(JsonToPojoVisualPanel2.class, "JsonToPojoVisualPanel2.jPanel4.TabConstraints.tabTitle"), jPanel4); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -360,20 +440,26 @@ public final class JsonToPojoVisualPanel2 extends JPanel {
     private javax.swing.JLabel SuffixLabel;
     private javax.swing.JCheckBox addConstructor;
     private javax.swing.JCheckBox additionalPropertiesCheckBox;
+    private javax.swing.ButtonGroup annotationButtonGroup;
     private javax.swing.JTextField classNamePrefixField;
     private javax.swing.JTextField classNamePreviewField;
     private javax.swing.JTextField classNameSuffixField;
+    private javax.swing.JRadioButton fullAnnotationsRadioButton;
     private javax.swing.JCheckBox generatorCheckBox;
     private javax.swing.JCheckBox hashCodeCheckBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField mainClassNameField;
+    private javax.swing.JRadioButton noAnnotationsRadioButton;
     private javax.swing.JTextField packageNameField;
     private javax.swing.JCheckBox primitiveTypesCheckBox;
+    private javax.swing.JRadioButton reducedAnnotationsRadioButton;
     private javax.swing.JCheckBox toStringCheckBox;
     private javax.swing.JCheckBox useBuilders;
     private javax.swing.JCheckBox useGetters;
