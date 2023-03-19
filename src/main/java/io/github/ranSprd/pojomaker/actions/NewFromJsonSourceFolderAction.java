@@ -52,7 +52,6 @@ public final class NewFromJsonSourceFolderAction extends NodeAction {
 
     @Override
     protected boolean enable(Node[] activatedNodes) {
-//        return Selenium2Support.isSupportEnabled(UICommonUtils.getFileObjectsFromNodes(activatedNodes));
         return true;
     }
 
@@ -84,10 +83,10 @@ public final class NewFromJsonSourceFolderAction extends NodeAction {
         if (cPath != null) {
             String resourceName = cPath.getResourceName(folderObject);
             if (StringUtils.isNotBlank(resourceName)) {
-                return Optional.of( resourceName.replaceAll("/", "."));
+                return Optional.of( resourceName.replace("/", "."));
             }
         }
-        return Optional.of( folderObject.getName().replaceAll(File.separator, "."));
+        return Optional.of( folderObject.getName().replace(File.separator, "."));
     }
 
     /**

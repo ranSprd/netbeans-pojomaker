@@ -90,15 +90,13 @@ public class ClassesGenerator {
 
         JType result = mapper.generate(jcodeModel, mainJavaClassName, packageName, jsonSource);
         
-        CodeWriter cw = new CodeWriter() {
+        CodeWriter codeWriter = new CodeWriter() {
             private OutputStream lastOpened = null;
 
             @Override
             public OutputStream openBinary(JPackage pkg, String fileName) throws IOException {
                 close();
                 lastOpened = baseFolder.createAndOpen(fileName);
-//                throw new UnsupportedOperationException("Not supported yet."); 
-//                return null;
                 return lastOpened;
             }
 
@@ -113,8 +111,7 @@ public class ClassesGenerator {
                 }
             }
         };
-        jcodeModel.build(cw);
-//        jcodeModel.build(outputJavaClassDirectory);
+        jcodeModel.build(codeWriter);
     }
 
 }
