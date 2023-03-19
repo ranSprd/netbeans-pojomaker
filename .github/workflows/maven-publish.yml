@@ -95,15 +95,15 @@ jobs:
     - name: Read project version
       run: echo "release_version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >>$GITHUB_ENV
         
-    - name: Publish to GitHub Packages 
-      run: | 
-        cat ${{ github.workspace }}/settings.xml
-        echo "  "
-        echo "version is : ${{ env.release_version }}:"
-        echo "release tag: ${{ env.release_tag }}:"
-        mvn --batch-mode deploy -Dgpg.skip=true -DskipTests -P github -s $GITHUB_WORKSPACE/settings.xml
-      env:
-        GITHUB_TOKEN: ${{ github.token }} # GITHUB_TOKEN is the default env for the password
+#    - name: Publish to GitHub Packages 
+#      run: | 
+#        cat ${{ github.workspace }}/settings.xml
+#        echo "  "
+#        echo "version is : ${{ env.release_version }}:"
+#        echo "release tag: ${{ env.release_tag }}:"
+#        mvn --batch-mode deploy -Dgpg.skip=true -DskipTests -P github -s $GITHUB_WORKSPACE/settings.xml
+#      env:
+#        GITHUB_TOKEN: ${{ github.token }} # GITHUB_TOKEN is the default env for the password
     
     - name: create github release entry
       uses: ncipollo/release-action@v1
