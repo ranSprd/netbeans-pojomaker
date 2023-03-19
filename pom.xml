@@ -53,7 +53,7 @@
     <dependency>
       <groupId>org.jsonschema2pojo</groupId>
       <artifactId>jsonschema2pojo-core</artifactId>
-      <version>1.1.1</version>
+      <version>1.2.1</version>
     </dependency>    
     <dependency>
       <groupId>com.sun.codemodel</groupId>
@@ -68,34 +68,34 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>2.13.2</version>
+      <version>2.14.2</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.13.2.2</version>
+      <version>2.14.2</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
-      <version>2.13.2</version>
+      <version>2.14.2</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.8.2</version>
+      <version>5.9.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
-      <version>5.8.2</version>
+      <version>5.9.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.8.2</version>
+      <version>5.9.2</version>
       <scope>test</scope>
     </dependency>
     
@@ -103,72 +103,72 @@
     <dependency>
       <groupId>org.netbeans.api</groupId>
       <artifactId>org-netbeans-api-annotations-common</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE140</version>
     </dependency>
     <dependency>
       <groupId>org.netbeans.api</groupId>
       <artifactId>org-netbeans-api-templates</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE140</version>
     </dependency>
     <dependency>
       <groupId>org.netbeans.api</groupId>
       <artifactId>org-openide-util</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE140</version>
     </dependency>
     <dependency>
       <groupId>org.netbeans.api</groupId>
       <artifactId>org-openide-util-ui</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE140</version>
     </dependency>
     <dependency>
       <groupId>org.netbeans.api</groupId>
       <artifactId>org-openide-actions</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE140</version>
     </dependency>
     <dependency>
       <groupId>org.netbeans.api</groupId>
       <artifactId>org-openide-nodes</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE140</version>
     </dependency>
     <dependency>
       <groupId>org.netbeans.api</groupId>
       <artifactId>org-openide-filesystems</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE140</version>
     </dependency>
     <dependency>
       <groupId>org.netbeans.api</groupId>
       <artifactId>org-openide-loaders</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE140</version>
     </dependency>
     <dependency>
       <groupId>org.netbeans.api</groupId>
       <artifactId>org-openide-dialogs</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE140</version>
     </dependency>
     <dependency>
       <groupId>org.netbeans.api</groupId>
       <artifactId>org-openide-awt</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE140</version>
     </dependency>
     <dependency>
       <groupId>org.netbeans.api</groupId>
       <artifactId>org-netbeans-modules-projectapi</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE140</version>
     </dependency>
     <dependency>
       <groupId>org.netbeans.api</groupId>
       <artifactId>org-openide-util-lookup</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE140</version>
     </dependency>
     <dependency>
       <groupId>org.netbeans.api</groupId>
       <artifactId>org-netbeans-api-java-classpath</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE140</version>
     </dependency>
     <!--    <dependency>
       <groupId>org.netbeans.modules</groupId>
       <artifactId>org-netbeans-modules-java-j2seproject</artifactId>
-      <version>RELEASE126</version>
+      <version>RELEASE140</version>
     </dependency>-->
     
   </dependencies>
@@ -178,7 +178,7 @@
       <plugin>
         <groupId>org.apache.netbeans.utilities</groupId>
         <artifactId>nbm-maven-plugin</artifactId>
-        <version>4.7</version>
+        <version>4.8</version>
         <extensions>true</extensions>
         <configuration>
           <publicPackages>
@@ -191,7 +191,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.10.1</version>
+        <version>3.11.0</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
@@ -200,7 +200,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.2.2</version>
+        <version>3.3.0</version>
         <configuration>
           <archive>
             <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
@@ -210,7 +210,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>3.0.0-M5</version>
+        <version>3.0.0-M7</version>
         <configuration>
           <!--upgrade MINOR instead of PATCH--> 
           <projectVersionPolicyId>SemVerVersionPolicy</projectVersionPolicyId>
@@ -221,7 +221,7 @@
           <dependency>
             <groupId>org.apache.maven.release</groupId>
             <artifactId>maven-release-semver-policy</artifactId>
-            <version>3.0.0-M5</version>
+            <version>3.0.0-M7</version>
           </dependency>
         </dependencies>
       </plugin>      
@@ -242,7 +242,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.22.0</version>
+        <version>2.22.2</version>
       </plugin>
     </plugins>
   </build>
@@ -333,7 +333,7 @@
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-surefire-plugin</artifactId>
-              <version>3.0.0-M6</version>
+              <version>3.0.0-M9</version>
               <configuration>
                 <!-- Sets the VM argument line used when unit tests are run. -->
                 <argLine>${surefireArgLine}</argLine>
