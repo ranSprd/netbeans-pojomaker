@@ -95,35 +95,34 @@ jobs:
     - name: Read project version
       run: echo "release_version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >>$GITHUB_ENV
         
-        
-#    - name: Publish to GitHub Packages 
-#      run: | 
-#        cat ${{ github.workspace }}/settings.xml
-#        echo "  "
-#        echo "version is : ${{ env.release_version }}:"
-#        echo "release tag: ${{ env.release_tag }}:"
-#        mvn --batch-mode deploy -Dgpg.skip=true -DskipTests -P github -s $GITHUB_WORKSPACE/settings.xml
-#      env:
-#        GITHUB_TOKEN: ${{ github.token }} # GITHUB_TOKEN is the default env for the password
-#    
-#    - name: create github release entry
-#      uses: ncipollo/release-action@v1
-#      with:
-#        tag: ${{ env.release_tag }}
-#        generateReleaseNotes: true
-#        allowUpdates: true
-#        body: |
-#          ${{ env.HEADER_1 }}
-#          
-#          The latest version of that plugin is available on Maven central https://search.maven.org/artifact/io.github.ranSprd/netbeans-pojomaker/${{ env.release_version }}/nbm
-#          or from Apache Netbeans Plugin Portal (https://plugins.netbeans.apache.org).
-#         
-#          ```
-#          ${{ env.HEADER_2 }}
-#          
-#          ${{ steps.create-release-notes.outputs.changelog }}
-#
-#        token: ${{ secrets.GITHUB_TOKEN }}   
+    - name: Publish to GitHub Packages 
+      run: | 
+        cat ${{ github.workspace }}/settings.xml
+        echo "  "
+        echo "version is : ${{ env.release_version }}:"
+        echo "release tag: ${{ env.release_tag }}:"
+        mvn --batch-mode deploy -Dgpg.skip=true -DskipTests -P github -s $GITHUB_WORKSPACE/settings.xml
+      env:
+        GITHUB_TOKEN: ${{ github.token }} # GITHUB_TOKEN is the default env for the password
+    
+    - name: create github release entry
+      uses: ncipollo/release-action@v1
+      with:
+        tag: ${{ env.release_tag }}
+        generateReleaseNotes: true
+        allowUpdates: true
+        body: |
+          ${{ env.HEADER_1 }}
+          
+          The latest version of that plugin is available on Maven central https://search.maven.org/artifact/io.github.ranSprd/netbeans-pojomaker/${{ env.release_version }}/nbm
+          or from Apache Netbeans Plugin Portal (https://plugins.netbeans.apache.org).
+         
+          ```
+          ${{ env.HEADER_2 }}
+          
+          ${{ steps.create-release-notes.outputs.changelog }}
+
+        token: ${{ secrets.GITHUB_TOKEN }}   
         
   merge:
     runs-on: ubuntu-latest
@@ -141,13 +140,16 @@ jobs:
       run: |
         git config user.email "actions@github.com"
         git config user.name "GitHub Actions"
+        git config pager.branch false
 
     - name: Merge back to master
       run: |
           git status
+          git branch -vva
           git checkout master
           git pull
           git rebase release master
+          git branch -vva
           git push origin
 
 #          git fetch --unshallow
