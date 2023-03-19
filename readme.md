@@ -1,5 +1,5 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ranSprd_netbeans-pojomaker&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ranSprd_netbeans-pojomaker)
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.ranSprd/netbeans-pojoMaker.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.ranSprd%22%20AND%20a:%22netbeans-pojoMaker%22)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.ranSprd/netbeans-pojoMaker.svg?label=Maven%20Central)](https://central.sonatype.com/search?q=netbeans-pojoMaker&namespace=io.github.ranSprd)
 
 Netbeans PojoMaker Plugin
 =========================
@@ -16,6 +16,8 @@ After installation of the nbm file you can find the plugin in action in the cont
 
 # Changelog
 
+- 0.6.x 
+    - upgrade dependencies
 - 0.5.0 
     - reduce JSON annotations
     - bugfixing
