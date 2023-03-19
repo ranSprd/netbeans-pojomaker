@@ -144,9 +144,10 @@ jobs:
 
     - name: Merge back to master
       run: |
-#          git fetch --unshallow
           git status
           git checkout master
           git pull
           git rebase release master
           git push origin
+
+#          git fetch --unshallow
