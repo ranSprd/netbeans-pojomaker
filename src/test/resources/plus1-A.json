@@ -1,0 +1,17 @@
+{
+    "src": "shellyplus1-4855199c5cf4",
+    "dst": "shellyplus1-4855199c5cf4/events",
+    "method": "NotifyStatus",
+    "params": {
+        "ts": 1692040174.39,
+        "switch:0": {
+            "id": 0,
+            "output": true,
+            "source": "switch"
+        },
+        "_input:0": {
+            "id": 0,
+            "state": true
+        }
+    }
+}

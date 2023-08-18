@@ -23,6 +23,9 @@ import com.sun.codemodel.JMethod;
 import org.jsonschema2pojo.Annotator;
 import org.jsonschema2pojo.GenerationConfig;
 
+import javax.lang.model.SourceVersion;
+
+
 /**
  * only add annotations to fields if their name is not equal to the json attribute, e.g.
  * the attribute name contains a '_'
@@ -55,9 +58,19 @@ public class ReducedSchemaAnnotator implements Annotator {
 
     @Override
     public void propertyField(JFieldVar jfv, JDefinedClass jdc, String string, JsonNode jn) {
-        if (string != null && string.contains("_")) {
-            wrapped.propertyField(jfv, jdc, string, jn);
+        if (string != null) {
+            if (isInvalidName(string) || string.contains("_") || string.contains("$")) {
+                // Variable names should not start with underscore _ or 
+                // dollar sign $ characters, even though both are allowed.
+                // general, some special characters found so we use a another variable name
+                wrapped.propertyField(jfv, jdc, string, jn);
+            }
         }
+    }
+    
+    public boolean isInvalidName(String name) {
+        return !SourceVersion.isIdentifier(name);
+                            //&& !SourceVersion.isKeyword(name);
     }
 
     @Override
