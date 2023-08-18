@@ -30,8 +30,14 @@ public class ReducedSchemaAnnotatorTest {
         assertTrue( obj.isInvalidName("switch:1"));
         assertTrue( obj.isInvalidName("switch#1"));
         
+        assertFalse( obj.isInvalidName("$switch1"));
         assertFalse( obj.isInvalidName("switch_1"));
         assertFalse( obj.isInvalidName("validKeyName"));
+    }
+    
+    @Test
+    public void testDollarSign() {
+        assertTrue( "$switch:0".contains("$"));
     }
     
 }

@@ -68,6 +68,11 @@ public class ReducedSchemaAnnotator implements Annotator {
         }
     }
     
+    /**
+     * 
+     * @param name
+     * @return true if the given name is not a valid java identifier name
+     */
     public boolean isInvalidName(String name) {
         return !SourceVersion.isIdentifier(name);
                             //&& !SourceVersion.isKeyword(name);
