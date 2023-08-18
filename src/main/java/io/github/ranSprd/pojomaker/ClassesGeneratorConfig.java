@@ -33,7 +33,7 @@ public class ClassesGeneratorConfig extends DefaultGenerationConfig {
     private SourceType sourceType = SourceType.JSON;
     
     private InclusionLevel inclusionLevel = InclusionLevel.NON_NULL;
-    private JsonCodeAnnotations jsonCodeAnnotations = JsonCodeAnnotations.NOTHING;
+    private JsonCodeAnnotations jsonCodeAnnotations = JsonCodeAnnotations.REDUCED;
     
 
     @Override
