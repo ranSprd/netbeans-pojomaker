@@ -114,7 +114,7 @@ jobs:
         body: |
           ${{ env.HEADER_1 }}
           
-          The latest version of that plugin is available on Maven central https://search.maven.org/artifact/io.github.ranSprd/netbeans-pojomaker/${{ env.release_version }}/nbm
+          The latest version of that plugin is available on Maven central https://central.sonatype.com/artifact/io.github.ranSprd/netbeans-pojoMaker/${{ env.release_version }}/versions
           or from Apache Netbeans Plugin Portal (https://plugins.netbeans.apache.org).
          
           ```
