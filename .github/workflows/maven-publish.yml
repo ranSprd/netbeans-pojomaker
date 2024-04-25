@@ -43,7 +43,7 @@ jobs:
         MAVEN_OSSRH_USERNAME: Nagel
         MAVEN_OSSRH_PWD: ${{ secrets.MAVEN_OSSRH_PWD }}        
         MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
-        MAVEN_GPG_KEY: ${{ secrects.MAVEN_GPG_PRIVATE_KEY }}
+        MAVEN_GPG_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
         
     - name: Push changes to Git
       run: |
