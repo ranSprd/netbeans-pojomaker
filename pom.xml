@@ -243,7 +243,7 @@
                                 <arg>loopback</arg>
                             </gpgArguments>
                             <useAgent>false</useAgent>
-                            <signer>bc</signer>
+                            <!--<signer>bc</signer>-->
                         </configuration>
                     </execution>
                 </executions>
