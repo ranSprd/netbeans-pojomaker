@@ -48,7 +48,7 @@ jobs:
           echo "pgp secret does NOT exist"
         else
           echo "pgp secret exists"
-          gpg --list-secret-keys --keyid-format=long
+          gpg -k
         fi
 #          cat $GITHUB_WORKSPACE/settings.xml
         
