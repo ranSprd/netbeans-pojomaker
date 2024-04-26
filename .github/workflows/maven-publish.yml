@@ -1,6 +1,6 @@
 # This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
 # For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
-
+# bitshifted/git-auto-semver
 name: Release
 
 on:
@@ -42,6 +42,7 @@ jobs:
           echo "pgp secret does NOT exist"
         else
           echo "pgp secret exists"
+          pgp -k
         fi
 
     - name: Publish to Apache Maven Central
@@ -51,7 +52,6 @@ jobs:
         MAVEN_OSSRH_USERNAME: Nagel
         MAVEN_OSSRH_PWD: ${{ secrets.MAVEN_OSSRH_PWD }}        
         MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
-        MAVEN_GPG_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
         
     - name: Push changes to Git
       run: |
