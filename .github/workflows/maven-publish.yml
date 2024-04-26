@@ -56,12 +56,13 @@ jobs:
 
     - name: Publish to Apache Maven Central
 #      run: mvn --batch-mode release:prepare release:perform -P release -Dgpg.keyname=${{ secrets.MAVEN_GPG_PRIVATE_KEY_NAME }} -Dgpg.passphrase=${{ secrets.MAVEN_GPG_PASSPHRASE}} -s $GITHUB_WORKSPACE/settings.xml
-      run: mvn -Dgpg.useagent=false -Dgpg.passphrase=${{ secrets.MAVEN_GPG_PASSPHRASE}} --batch-mode --no-transfer-progress release:prepare release:perform -P release -s $GITHUB_WORKSPACE/settings.xml
+      run: mvn --batch-mode --no-transfer-progress -Dgpg.signer=bc release:prepare release:perform -P release --settings $GITHUB_WORKSPACE/settings.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
         MAVEN_OSSRH_USERNAME: Nagel
         MAVEN_OSSRH_PWD: ${{ secrets.MAVEN_OSSRH_PWD }}        
         MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+        MAVEN_GPG_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
 #        MAVEN_GPG_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY_NAME }}
         
     - name: Push changes to Git
