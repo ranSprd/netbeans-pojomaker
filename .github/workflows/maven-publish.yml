@@ -41,7 +41,8 @@ jobs:
         if [[ -z "${{ secrets.MAVEN_GPG_PRIVATE_KEY }}" ]]; then
           echo "pgp secret does NOT exist"
         else
-          echo "pgp secret exists"        
+          echo "pgp secret exists"
+        fi
 
     - name: Publish to Apache Maven Central
       run: mvn --batch-mode release:prepare release:perform -P release -s $GITHUB_WORKSPACE/settings.xml
