@@ -42,7 +42,7 @@ jobs:
           echo "pgp secret does NOT exist"
         else
           echo "pgp secret exists"
-          pgp -k
+          cat $GITHUB_WORKSPACE/settings.xml
         fi
 
     - name: Publish to Apache Maven Central
