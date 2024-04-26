@@ -46,7 +46,7 @@ jobs:
         fi
 
     - name: Publish to Apache Maven Central
-      run: mvn --batch-mode release:prepare release:perform -P release -s $GITHUB_WORKSPACE/settings.xml
+      run: mvn --batch-mode release:prepare release:perform -P release -Dgpg.keyname=${{ secrets.MAVEN_GPG_PRIVATE_KEY_NAME }} -s $GITHUB_WORKSPACE/settings.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
         MAVEN_OSSRH_USERNAME: Nagel
