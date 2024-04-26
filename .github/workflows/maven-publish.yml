@@ -28,8 +28,8 @@ jobs:
         server-id: ossrh  # Value of the distributionManagement/repository/id field of the pom.xml
         server-username: MAVEN_OSSRH_USERNAME # env variable for username in deploy
         server-password: MAVEN_OSSRH_PWD # env variable for token in deploy        
-#        gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }} # Value of the GPG private key to import
-#        gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
+        gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }} # Value of the GPG private key to import
+        gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
 
     - name: Configure Git user
       run: |
@@ -49,8 +49,8 @@ jobs:
         else
           echo "pgp secret exists"
           gpg -k
+          cat $GITHUB_WORKSPACE/settings.xml
         fi
-#          cat $GITHUB_WORKSPACE/settings.xml
         
 
 
