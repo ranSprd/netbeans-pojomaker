@@ -36,6 +36,12 @@ jobs:
         git config user.email "actions@github.com"
         git config user.name "GitHub Actions"
         
+    - name: Import GPG signing key
+      uses: crazy-max/ghaction-import-gpg@v5
+      with:
+        gpg_private_key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+        passphrase: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+        
     - name: Check if secret exists
       run: |
         if [[ -z "${{ secrets.MAVEN_GPG_PRIVATE_KEY }}" ]]; then
@@ -43,13 +49,9 @@ jobs:
         else
           echo "pgp secret exists"
           cat $GITHUB_WORKSPACE/settings.xml
+          gpg -k
         fi
         
-    - name: Import GPG signing key
-      uses: crazy-max/ghaction-import-gpg@v5
-      with:
-        gpg_private_key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
-        passphrase: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 
 
     - name: Publish to Apache Maven Central
