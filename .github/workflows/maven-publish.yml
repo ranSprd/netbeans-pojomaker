@@ -46,7 +46,7 @@ jobs:
         fi
 
     - name: Publish to Apache Maven Central
-      run: mvn --batch-mode --no-transfer-progress release:prepare release:perform -P release --settings $GITHUB_WORKSPACE/settings.xml
+      run: mvn -e --batch-mode --no-transfer-progress release:prepare release:perform -P release --settings $GITHUB_WORKSPACE/settings.xml
       env:
         MAVEN_OSSRH_USERNAME: Nagel
         MAVEN_OSSRH_PWD: ${{ secrets.MAVEN_OSSRH_PWD }}        
